@@ -7,9 +7,9 @@ function results = function_comparisson(MAT2_new2,vect2_indep,g2_mean,line_int_v
 % matG1: k_1 *gradient * n_1 at the points where the jump of flux is evaluated
 % matG2: k_2 *gradient * n_2 at the points where the jump of flux is evaluated
 % T_1_nd: solution in Omega_1
-% T_2_gmean: solution considering g2_mean
+% T_2_gmean: solution in Omega2 associated with g2_mean
 % DOF1, DOF2, DOF_G: degrees of freedom in Omega1, Omega2 and Gamma_bot
-% PosMat: N evaluated in the points where the jump of flux is evaluated
+% PosMat: shape functions N evaluated in the points where the jump of flux is evaluated
 % InfoLAB, InfoProblem, InfoMesh: general information of the problem
 % InfoMinimization: this structure defines which method will be used
 
@@ -29,8 +29,9 @@ results.fluxOmega2_gmean_d =  fluxOmega2_gmean_nd * dimensionalize_flux;
 v_0 = -fluxOmega1_nd - fluxOmega2_gmean_nd;
 % construct B_0 
 len_q_inf = length(DOF_G);
-%DOF_Q = 1:1:101;
-D_matQ = eye(len_q_inf);
+D_matQ = ((InfoMesh.fin_x - InfoMesh.ini_x)/len_q_inf) * eye(len_q_inf);
+D_matQ(1,1) = D_matQ(1,1)/2;
+D_matQ(len_q_inf,len_q_inf) = D_matQ(len_q_inf,len_q_inf)/2;
 %D_matQ = compute_diff_meshes(DOF_G,DOF_Q,InfoMesh);
 short2long = length(DOF2) - len_q_inf;
 D_mat = [D_matQ; zeros(short2long,size(D_matQ,2))];
@@ -99,7 +100,7 @@ end
 %% Restricted LS
 DOF_Q = DOF_G;
 % compute the solution for restricted least-squares:
-q2_mean = InfoProblem.q2 * ones(size(DOF_Q,2),1);       % flux associated with 0.5 K/km
+q2_mean = InfoProblem.q2 * ones(size(DOF_G,2),1);       % flux associated with 0.5 K/km
 Lower_bound = (0.3-0.5)/(0.5) * q2_mean;       % variation to 0.5 
 Upper_bound = (0.6-0.5)/(0.5) * q2_mean;       % flux associated with 0.5 K/km
 perturbation = optimvar('pert',length(pert_q_rect),'LowerBound',Lower_bound,'UpperBound',Upper_bound);

@@ -1,5 +1,18 @@
 function [G1n,M2s,b1n,m2s,M2s_p] = Nitsche_matrices2D_sparse(InfoMesh, InfoProblem, problem_int,Ar_phys)
+% Nitsche_matrices2D_sparse: Assemble Nitsche matrices in 2D using sparse matrices
+% Inputs:
+%   InfoMesh: structure containing mesh information
+%   InfoProblem: structure containing problem information
+%   problem_int: 1 - Lithosphere, 2 - Asthenosphere
+%   Ar_phys: area fractions of physical domain for each element
+% Outputs:
+% G1n: Gradient matrix G1n = [ ∫ (∂N/∂x * n) * N d Gamma]
+% M2s: Mass matrix M2s =  [ß ∫ N * N d Gamma]
+% b1n: Gradient vector b1n = [ ∫ (∂N/∂x * n) * T_LAB d Gamma ]
+% m2s: Mass vector m2s = [ ∫ N * T_LAB d Gamma ]
+% M2s_p: Mass matrix without considering ß, M2s_p = [ ∫ N * N d Gamma]
 
+%% initialize
 % unfold mesh
 T = InfoMesh.T;
 X = InfoMesh.X;

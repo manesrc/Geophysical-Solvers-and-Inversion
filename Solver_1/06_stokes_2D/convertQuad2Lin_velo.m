@@ -1,4 +1,13 @@
 function u_lin = convertQuad2Lin_velo(velo_quad,XP,TP,T)
+% convert velocity field from quadratic to linear elements
+% INPUT:
+%   velo_quad: velocity field defined on quadratic elements
+%   XP: coordinates of the linear mesh
+%   TP: connectivity matrix of the linear mesh
+%   T: connectivity matrix of the quadratic mesh
+% OUTPUT:
+%   u_lin: velocity field defined on linear elements
+
 
 num_elem = size(T,1);
 ndof_xlin = size(XP,1);

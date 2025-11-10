@@ -1,4 +1,8 @@
 function plotElementsOmega(Omega,InfoMesh)
+  % plots the elements inside a given domain Omega (graphical validation of results)
+  % input:
+  %   Omega: list of elements to plot
+  %   InfoMesh: structure with mesh information
     X = InfoMesh.X;
     T = InfoMesh.T;
     figure(120)

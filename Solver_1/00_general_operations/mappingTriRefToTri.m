@@ -1,4 +1,15 @@
 function [pts,w] = mappingTriRefToTri(verticesXv,gaussPoints,gaussWeights)
+%MAPPINGTRIREFTOTRI Maps Gauss points and weights from reference triangle to an
+%   arbitrary triangle defined by its vertices (for Delaunay triangulation).
+%   Inputs:
+%       verticesXv - 3x2 matrix where each row represents the (x,y
+%                     coordinates of a vertex of the triangle.
+%       gaussPoints - Nx2 matrix of Gauss points in the reference triangle.
+%       gaussWeights - Nx1 vector of Gauss weights in the reference triangle.
+%   Outputs:
+%       pts - Nx2 matrix of mapped Gauss points in the arbitrary triangle.
+%       w - Nx1 vector of mapped Gauss weights in the arbitrary triangle.
+
 % From (-1,-1) - (1,-1) - (-1,1) 
 
 a = verticesXv(1,:);

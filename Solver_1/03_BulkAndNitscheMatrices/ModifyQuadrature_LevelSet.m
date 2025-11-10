@@ -1,5 +1,16 @@
 function [chi_pg,wpg,Ar_phys_el] = ModifyQuadrature_LevelSet(InfoMesh,problem_int,LSe,tolerance)
 %% compute more gauss points to see which of them is inside the element
+% and which outside depending on the level set function
+% Inputs:
+%   InfoMesh: structure containing mesh information
+%   problem_int: 1 - Lithosphere, 2 - Asthenosphere
+%   LSe: level set values at the element nodes
+%   tolerance: tolerance to consider a point on the interface
+% Outputs:
+%   chi_pg: locations of the gauss points
+%   wpg: modified weights of the gauss points
+%   Ar_phys_el: percentage of the element that belongs to the physical domain
+
 elemType = InfoMesh.elemType;                                           % quad
 NumberOfGaussPoints = InfoMesh.ngp_Nits;                         % more gauss points than normal
 [chi_pg,pespg] = quadrature(elemType,NumberOfGaussPoints); % obtain location of GP [chi,eta]

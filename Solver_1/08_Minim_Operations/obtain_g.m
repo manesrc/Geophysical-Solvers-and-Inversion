@@ -1,6 +1,22 @@
 function [g_perturbation,g_pert_sq] = obtain_g(B_0,v_0,method1,ratio_eig)
+% obtain_g: function to obtain the perturbation g (flux at the bottom boundary) 
+% that minimizes the flux across the interphase Gamma
+%
+% INPUT:
+% B_0                 : matrix B_0 of the rectangular system B_0*q
+% v_0                 : vector v_0 of the rectangular system B_0*q
+% method1             : method to solve the system
+%                       1: rectangular system
+%                       2: square system
+%                       4: both methods
+% ratio_eig          : ratio between the biggest and smallest eigenvalue to
+%                       consider in the minimization
+% OUTPUT:
+% g_perturbation     : perturbation g obtained with the rectangular system
+% g_pert_sq          : perturbation g obtained with the square system (if
+%                       method1 = 4)
 
-
+%% main code
 if method1 == 1 % solve the rectangular system 
     g_perturbation = compute_perturbation(B_0,v_0,ratio_eig);
     g_pert_sq = [];

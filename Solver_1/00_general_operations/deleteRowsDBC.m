@@ -1,5 +1,13 @@
 function [K, f] = deleteRowsDBC(K, f, DBCmatrix)
-
+% DELETEROWSDBC Modifies the stiffness matrix K and the load vector f
+% to apply Dirichlet boundary conditions specified in DBCmatrix.
+% INPUT:
+%   K          - Stiffness matrix
+%   f          - Load vector
+%   DBCmatrix  - Matrix where each row contains [rowIndex, prescribedValue]
+% OUTPUT:
+%   K          - Modified stiffness matrix
+%   f          - Modified load vector
 % Dirichlet boundary conditions -------------------------------------------
 rowsToDelete = DBCmatrix(:,1);
 nOfRowsToDelete = length(rowsToDelete);

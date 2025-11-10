@@ -1,7 +1,13 @@
 function [x,w] = quad1D(N, a, b)
-%
 % generates Gauss-Legendre quadratures with N points on the interval [a,b]
-%
+% input:
+%   N : number of quadrature points
+%   a : left boundary of the interval
+%   b : right boundary of the interval
+% output:
+%   x : quadrature points
+%   w : quadrature weights
+
 N  = N-1;  N1 = N+1;   N2 = N+2;
 
 xu = linspace(-1, 1, N1)';

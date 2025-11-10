@@ -1,4 +1,20 @@
 function [G_matrix,matrixS] = compute_Grad_interphase(nOfPoints_Elem,DOF_prob,problem_int,figurePointsInterface,InfoProblem,InfoMesh,Physical_area,min_ratio)
+% compute_Grad_interphase: computes the gradient matrix at the interphase
+% between two subdomains Lithosphere or Asthenosphere (1 or 2)
+%
+% INPUT:   
+% nOfPoints_Elem        : number of points to evaluate the flux per element
+% DOF_prob              : degrees of freedom of the problem to consider
+% problem_int          : 1 or 2, depending on the subdomain to consider
+% figurePointsInterface : 1 to plot the points where the flux is evaluated
+% InfoProblem          : structure with information of the problem
+% InfoMesh             : structure with information of the mesh
+% Physical_area        : matrix with the area of each element in each subdomain
+% min_ratio            : minimum ratio of area to consider an element well supported
+%
+% OUTPUT:
+% G_matrix             : gradient matrix evaluated at points at the interphase
+% matrixS              : shape functions matrix evaluated at points at the interphase
 
 % Mesh related information
 T = InfoMesh.T;

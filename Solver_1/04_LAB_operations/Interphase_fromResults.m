@@ -1,6 +1,15 @@
 function [positionLAB,index_interest] = Interphase_fromResults(x_interest,InfoLAB,seed_interest)
 % this function computes the position of the interphase at s of interest
 % s: parametric coordinate from [1,..., # datum]
+% inputs:
+%   x_interest: X-coordinate of interest (in m)
+%   InfoLAB: structure containing the results from LAB simulation
+%   seed_interest: structure containing the seed of interest
+%       .area: area of interest (if any)
+%       .previous_seed: seed of interest (if any)
+% outputs:
+%   positionLAB: position of the interphase at x_interest (in km)
+%   index_interest: index of the interphase at x_interest
 
 dataLAB_x = InfoLAB.LABx;
 dataLAB_y = InfoLAB.LABy;

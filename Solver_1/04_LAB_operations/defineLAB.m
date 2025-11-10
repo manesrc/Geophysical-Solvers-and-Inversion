@@ -8,7 +8,6 @@ function [LABx,LABy] = defineLAB(informationLAB)
 %               % three cases available 1. Linear, 2. Sinusoidal, 3. data
 %                if case linear needs point1 and point2 in y direction to draw a line
 
-%% 
 caso_aplicado = informationLAB.disposition;
 datosLAB = open('datos_isotherm.mat');
 

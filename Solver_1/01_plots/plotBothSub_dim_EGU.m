@@ -1,4 +1,22 @@
 function plotBothSub_dim_EGU(temp1,temp2,InfoMesh,InfoLAB,InfoProblem,nodes1,nodes2,grad2plot,xplotgrad,fig_num,varargin)
+% plot temperature distribution in both subdomains with gradient plot note this temperature 
+% comes from a Nitsche solution and not all the nodes in the mesh have temperature values
+% then NaN values are plotted in those nodes without temperature values using griddata in
+% the elements crossed by the interface
+% input:
+% temp1            : temperature in subdomain 1 (dimensionless)
+% temp2            : temperature in subdomain 2 (dimensionless)
+% InfoMesh        : structure containing mesh data
+% InfoLAB         : structure containing LAB data
+% InfoProblem     : structure containing problem data
+% nodes1          : nodes in subdomain 1
+% nodes2          : nodes in subdomain 2
+% grad2plot_mean  : gradient to plot (mean values)
+% xplotgrad       : x positions to plot the gradient
+% fig_num         : figure number
+% varargin        : cell containing additional parameters
+
+
 % unfold mesh
 T = InfoMesh.T;
 X = InfoMesh.X;

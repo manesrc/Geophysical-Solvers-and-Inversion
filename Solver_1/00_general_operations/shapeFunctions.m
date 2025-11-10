@@ -1,9 +1,13 @@
 function [N,Nxi,Neta] = shapeFunctions(elemType,numberOfElementNodes,posIntegrationPoints)
-% [N,Nxi,Neta] = shapeFunctions(elemType, numberOfElementNodes, posIntegrationPoints)
-%
 % Evaluates shape functions and derivatives at integration points
-%
-%
+% input:
+%  elemType                0=line, 1=square, 2=triangle
+%  numberOfElementNodes    number of nodes per element
+%  posIntegrationPoints    position of integration points in reference element
+% output:
+%  N       shape functions evaluated at integration points
+%  Nxi     derivative of shape functions wrt xi evaluated at integration points
+%  Neta    derivative of shape functions wrt eta evaluated at integration points
 
 switch(elemType)
    case 0 % 1D lines

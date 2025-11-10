@@ -1,8 +1,21 @@
 function [Ke,fe,Ar_phys_el] = mkElementMatrix(Xe, numberOfNodes,pespg, N, Nxi, Neta, ...
     InfoProblem,problem_int,interface,InfoMesh)
-%% elemental matrix calculation
-%Xe, nnode, pospg, pespg, N, Nxi, Neta, InfoProblem,problem_int,interface,InfoLAB
-
+% elemental matrix calculation for bulk part of the problem
+% input:
+% Xe: coordinates of the element nodes
+% numberOfNodes: number of nodes in the element
+% pespg: weights of the gauss points
+% N, Nxi, Neta: shape functions and derivatives at gauss points
+% InfoProblem: problem information (conductivity, source term, etc)
+% problem_int: indicates if we are in Omega_1 or Omega_2
+% interface: structure with information if the element is crossed 
+% by LAB and the type of integration used (Delaunay or grid of points 
+% in or out the physical part of the element)
+% InfoMesh: mesh information
+% output:
+% Ke: elemental stiffness matrix
+% fe: elemental load vector
+% Ar_phys_el: area of the physical part of the element crossed by LAB
 
 if problem_int == 1
    conductivity = InfoProblem.k1;

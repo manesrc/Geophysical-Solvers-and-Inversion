@@ -1,5 +1,12 @@
 function [DOF1,DOF2,DOF_inter,DOF_Q] = define_dof(InfoMesh)
 % define the degrees of freedom active in each sub-problem
+% INPUT:
+%   InfoMesh: structure containing mesh information
+% OUTPUT:
+%   DOF1: vector with the DOF active in subdomain Omega1
+%   DOF2: vector with the DOF active in subdomain Omega2
+%   DOF_inter: vector with the DOF active in the interphase
+%   DOF_Q: vector with the DOF in the bottom boundary (to apply flux BC)
 
 T = InfoMesh.T;                              % connectivity matrix
 list1 = InfoMesh.list1;                     % elements in Omega1

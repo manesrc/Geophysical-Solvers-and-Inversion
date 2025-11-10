@@ -1,13 +1,8 @@
 function [quadPoints,quadWeights] = quadrature(elemType,numberOfPoints)
-% [quadPoints,quadWeights] = quadrature(elemType, numberOfPoints)
-%
-% Calculates the position and weight of the gauss points in the reference
-% element
-%
+% Calculates the position and weight of the gauss points in the reference element
 % INPUT
 %   elemType         0=line, 1=square, 2=triangle
 %   numberOfPoints   number of quadrature points
-%
 % OUTPUT
 %   position and weigth of gauss points in the reference element
 %

@@ -1,4 +1,15 @@
 function plot_temp_flux(ii,T2_d,perturbation,fluxOmega2_d,results,InfoMesh,InfoLAB,InfoProblem,varargin)
+% post-process temperature and flux plots
+% input:
+% ii              : figure number
+% T2_d           : dimensionless temperature in subdomain 2
+% perturbation   : perturbation to add to the gradient for plotting
+% fluxOmega2_d  : flux in subdomain 2 (dimensional)
+% results        : structure containing results data
+% InfoMesh       : structure containing mesh data
+% InfoLAB        : structure containing LAB data
+% InfoProblem    : structure containing problem data
+% varargin       : cell containing additional parameters
 
 %% post-process plots
 gradient2plot = results.gradient_T_mean + perturbation;

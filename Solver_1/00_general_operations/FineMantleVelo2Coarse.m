@@ -1,6 +1,13 @@
 function [u_coarse,p_coarse] = FineMantleVelo2Coarse(results_fine,InfoMesh_fine,InfoMesh_coarse)
 % this function receives a mantle flow velocity field of a fine mesh and adapts the results to a 
 % coarse mesh to avoid these variations modify results
+% INPUT:
+%   results_fine: structure containing the results of the fine mesh simulation
+%   InfoMesh_fine: structure containing the mesh information of the fine mesh
+%   InfoMesh_coarse: structure containing the mesh information of the coarse mesh
+% OUTPUT:
+%   u_coarse: adapted mantle flow velocity field on the coarse mesh
+%   p_coarse: adapted pressure field on the coarse mesh
 
 u_coarse = zeros(size(InfoMesh_coarse.X));
 p_coarse = zeros(size(InfoMesh_coarse.X,1),1);

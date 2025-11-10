@@ -1,4 +1,18 @@
 function [chigp,wgp,Area_proportion] = ModifyQuadrature_Delaunay(P1,P2,problem_int,LS_elem,Xe,tolerance)
+% This function modifies the quadrature points and weights for an
+% element that is cut by the interface, using Delaunay triangulation.
+% Inputs:
+%   - P1, P2: endpoints of the segment representing the interface within
+%             the element (in isoparametric coordinates).
+%   - problem_int: Lithosphere is 1 and Asthenosphere is 2.
+%   - LS_elem: level set values at the element nodes.
+%   - Xe: coordinates of the element nodes.
+%   - tolerance: small value to determine the interface location.
+%   Outputs:    
+%   - chigp: modified quadrature points (in isoparametric coordinates).
+%   - wgp: modified quadrature weights.
+%   - Area_proportion: proportion of the area of the sub-element.
+
 
 LSe = LS_elem;
 

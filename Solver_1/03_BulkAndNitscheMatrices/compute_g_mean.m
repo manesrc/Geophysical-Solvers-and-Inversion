@@ -1,4 +1,12 @@
 function [g_vect,line_int_vect] = compute_g_mean(DOF_G,InfoMesh,InfoProblem)
+% compute the mean value of g over the interface LAB
+% input:
+% DOF_G: vector with the DOFs associated to the interface LAB
+% InfoMesh: structure with the mesh information
+% InfoProblem: structure with the problem information
+% output:
+% g_vect: vector with the mean value of fluxes over the bottom boundary
+% line_int_vect: vector with the integral of g over the interface LAB
 numDOF_inf = size(DOF_G,1);
 x_length_elem = (1/(numDOF_inf-1)); % element size
 % 1D shape functions

@@ -1,4 +1,17 @@
 function Ge = mgElementMatrix(Xe,velo_element, interface, nnode_el, pespg, N, Nxi, Neta, InfoProblem,InfoMesh, InfoMaterial)
+% mgElementMatrix: computes the elemental matrix for the convection term with gradT
+% INPUT:
+%   Xe: coordinates of the element nodes
+%   velo_element: velocity at the element nodes
+%   interface: structure with information about the interface
+%   nnode_el: number of nodes in the element
+%   pespg: weights of the Gauss points
+%   N, Nxi, Neta: shape functions and their derivatives at Gauss points
+%   InfoProblem: structure with problem information
+%   InfoMesh: structure with mesh information
+%   InfoMaterial: structure with material properties
+% OUTPUT:
+%   Ge: elemental matrix for the convection term with gradT 
 
 rho = 1;        % adimensional calculation
 cal = InfoMaterial.calorific; % adimensional calculation

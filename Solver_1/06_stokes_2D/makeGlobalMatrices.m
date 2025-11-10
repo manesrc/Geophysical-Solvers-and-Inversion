@@ -1,5 +1,28 @@
 function [K,G,f,mu,temp,rho,xgp22] = makeGlobalMatrices(elemType,X,T,XP,TP,material,T_Omega1,T_Omega2,LS_mesh,InfoMesh,InfoProblem,plot_up)
+% makeGlobalMatrices: assembles global matrices for the 2D Stokes problem
 %
+% INPUT:
+% elemType                  type of element
+% X                         coordinates of nodes
+% T                         connectivity matrix for velocity nodes
+% XP                        connectivity matrix for pressure nodes
+% TP                        connectivity matrix for pressure nodes
+% material                  structure containing material properties
+% T_Omega1                  nodal temperature values in subdomain Omega1
+% T_Omega2                  nodal temperature values in subdomain Omega2
+% LS_mesh                   level set values at mesh nodes
+% InfoMesh                  structure containing mesh information
+% InfoProblem               structure containing problem information
+% plot_up                   flag for plotting updates
+%
+% OUTPUT:
+% K                         global stiffness matrix
+% G                         global gradient matrix 
+% f                         global force vector
+% mu                        viscosity values at gauss points (for postprocessing)
+% temp                      temperature values at gauss points (for postprocessing)
+% rho                       density values at gauss points (for postprocessing)
+% xgp22                     coordinates of gauss points (for postprocessing)    
 
 % number of space dimensions
 nsd = 2;
@@ -101,7 +124,7 @@ for ielem = 1:nOfElements
           nOfVelocityDofPerElement,chigp1,wgp1,N1,Nxi1,Neta1,...
           nOfPressureNodesPerElement,NP1,material,temperature_el,LS_el,tolerance);
    else
-       error('cosas raras')
+       error('should not go here')
    end
 
    if plot_up.parameters == 1

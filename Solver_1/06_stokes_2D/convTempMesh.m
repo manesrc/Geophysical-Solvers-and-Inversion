@@ -1,10 +1,19 @@
 function [Temp1long,Temp2long,LS_Mesh] = convTempMesh(X,T,TP,Temp1,Temp2,InfoMesh)
-% de InfoMesh saco los elementos en Omega 1 y Omega 2. 
-% Las temperaturas Temp1 y Temp2 pertenecen a la malla XP, TP -> recorro TP
-% uno a uno todos los elementos y calculo temperaturas en los nodos
-% restantes
-% Temp1long = [nnodos_X,1] <- Temp1 = [nnodos_XP,1]
-% Temp2long = [nnodos_X,1] <- Temp2 = [nnodos_XP,1]
+% Stores temperatures Temp1,Temp2 (Nitsche solutions) into a vector of size = X (velocity mesh)
+% from InfoMesh get elements in Omega 1 and Omega 2, then go through all elements in TP (temp mesh)
+% and compute temperatures at remaining nodes
+% Temp1long = [nnodos_X,1] <- Temp1 = [nnodos_XP,1] + linear interpolations in remaining nodes
+% Temp2long = [nnodos_X,1] <- Temp2 = [nnodos_XP,1] + linear interpolations in remaining nodes
+% inputs:
+%   X,T = velocity mesh
+%   TP = temperature mesh
+%   Temp1, Temp2 = temperatures in Omega1 and Omega2 (Nitsche solutions)
+%   InfoMesh = structure with information about the temp mesh
+% outputs:
+%   Temp1long, Temp2long = temperatures in velocity mesh
+%   LS_Mesh = level set values in velocity mesh
+
+%% Initialization
 nnodosX = size(X,1);
 Temp1long = zeros(nnodosX,1); 
 Temp2long = zeros(nnodosX,1); 

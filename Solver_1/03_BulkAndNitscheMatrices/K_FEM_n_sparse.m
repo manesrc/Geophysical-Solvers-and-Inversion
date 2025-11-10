@@ -1,15 +1,12 @@
 function [K_red,f_red,Ar_phys_n] = K_FEM_n_sparse(InfoMesh, MeshIntegration, InfoProblem,problem_int)
 % creates matrix, source term (volumetric: f & Neumann: g) and measures the
 % physical part of the element in each subdomain
-% 
 % INPUT
 %   InfoMesh:    X,T
 %   MeshIntegration: position and weigth of
 % gauss points + shape functions and derivetives
 %   InfoProblem: Geometrical characteristics of the problem
-%   InfoLAB: Information of the interface
 %   problem_int: problem in Omega_1 or Omega_2
-%
 % OUTPUT
 %   K_red:  General matrix with the boundary conditions applied
 %   f_red, g_n: indep vector w/ BC and g_n the Neumann BC vector

@@ -1,7 +1,26 @@
 function [Ke,Ge,fe,mu22,temp22,rho22,Xee22] = makeElementMatrix(Xe, ...
    nVelocityDofPerElement,pospg,pespg,N,Nxi,Neta, ...
    nPressureNodesPerElement,NP, material,temp,Elem_LS,tolerance)
-%
+% input:
+% Xe                        coordinates of the element nodes
+% nVelocityDofPerElement    number of velocity dof per element
+% pospg                     position of the gauss points
+% pespg                     weights of the gauss points
+% N, Nxi, Neta               shape functions and derivatives at gauss points
+% nPressureNodesPerElement  number of pressure dof per element
+% NP                       shape functions for pressure at gauss points
+% material                  structure containing material properties
+% temp                      nodal temperature values
+% Elem_LS                   level set value for the element (if any)
+% tolerance                 tolerance for level set evaluation
+% output:
+% Ke                        element stiffness matrix
+% Ge                        element divergence matrix
+% fe                        element force vector
+% temp22, rho22, mu22      values of temperature, density, and viscosity at gauss points 
+%                           (cross-validating computation of properties)
+% Xee22                     positions where the above values have been computed (cross-validating mesh)
+
 
 % initialisation
 Ke = zeros(nVelocityDofPerElement,nVelocityDofPerElement);

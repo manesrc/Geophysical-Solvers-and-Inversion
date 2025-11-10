@@ -1,4 +1,18 @@
 function [list_Omega1,list_Omega2,list_cut_elem,list_edge_elem1,list_edge_elem2] = findElemNitsche_LS(InfoMesh,InfoLAB,tol,plot1)
+% This function classifies the elements of the mesh depending on the
+% position of the level set function in the nodes of each element
+% INPUT:
+%   InfoMesh: structure containing mesh information
+%   InfoLAB: structure containing LAB information
+%   tol: tolerance to consider LS = 0
+%   plot1: flag to plot the elements crossed by the interface
+% OUTPUT:
+%   list_Omega1: list of elements in Omega 1
+%   list_Omega2: list of elements in Omega 2
+%   list_cut_elem: list of elements correctly crossed by the interface
+%   list_edge_elem1: list of elements ill-crossed in Omega 1
+%   list_edge_elem2: list of elements ill-crossed in Omega 2
+
 % Level set
 LS = InfoMesh.LS_mesh;
 % mesh matrices

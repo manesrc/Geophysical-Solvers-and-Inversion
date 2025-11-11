@@ -15,16 +15,17 @@ This framework consists of three main components:
 
 1.  **[Solver 1 - UPLOADED] Subdivision solver (using Nitsche's method):** A physically-consistent solver that splits the domain (Lithosphere/Asthenosphere) and solves two separate 
 problems, enforcing the continuity of temperature and flux at the interface -> supporting journal paper DOI: 10.1108/hff-10-2023-0649.
-2.  **[Solver 2 - To be uploaded] Conduction-Convection Solver:** A novel, single-domain solver where convection velocities are determined to naturally adjust the isotherm value at 
+2.  **[Solver 2 - UPLOADED] Convection Solver:** A novel, single-domain solver where convection velocities are determined to naturally adjust the isotherm value at 
 the interface -> supporting journal paper in preparation.
 3.  **[Inverse Framework - To be uploaded] MCMC Inversion:** The "englobing" code that uses the two solvers above as an engine to solve the inverse problem, using Bayesian MCMC to 
 quantify the uncertainty of the LAB's geometry  -> supporting journal paper in preparation
 
 ### Repository Status
 
-This repository currently contains the **full MATLAB code for the first solver (Solver 1: Nitsche's Method)**.
+This repository currently contains the **full MATLAB code for the first and second solvers (Solver 1: Nitsche's Method and Solver 2: Convection Solver)**.
 * The core functions and modules are located in the uploaded folders each describing specific tasks developed during the code execution.
-* The main script to run this solver is `ComputeTemp_NitscheMethod.m`.
+* The main script to run the first solver is 'ComputeTemp_NitscheMethod.m'.
+* The main script to run the second solver is '
 
 The code for the second solver and the MCMC framework is currently being cleaned and prepared for publication and will be uploaded in the future.
 

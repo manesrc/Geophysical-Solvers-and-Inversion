@@ -24,22 +24,22 @@ quantify the uncertainty of the LAB's geometry  -> supporting journal paper in p
 
 This repository currently contains the **full MATLAB code for the first and second solvers (Solver 1: Nitsche's Method and Solver 2: Convection Solver)**.
 * The core functions and modules are located in the uploaded folders each describing specific tasks developed during the code execution.
-* The main script to run the first solver is 'ComputeTemp_NitscheMethod.m'.
-* The main script to run the second solver is '
+* The main script to run the first solver is 'ComputeTemp_NitscheMethod.m' 
+* The main script to run the second solver is 'main_uAdjustment.m'
+        * within the second solver there exist an iterative procedure to obtain 'equilibrium LAB configurations': those LAB geometries that produce a Stokes problem solution that when placed
+                                                                                                             in a thermal problem their result comply the isotherm condition at the geometry of the LAB
+        * also there exist different codes to produce velocity basis (two kinds available, with and without distance-related attenuation of viscosity)
 
-The code for the second solver and the MCMC framework is currently being cleaned and prepared for publication and will be uploaded in the future.
+The code for tthe MCMC inversion framework is currently being cleaned and prepared for publication and will be uploaded in the near future.
 
 ### How to Run (Solver 1)
 
 * **Language:** MATLAB R2024a 
 * **Core Requirements:** `OptimizationToolbox` 
-* **Main File:** `ComputeTemp_NitscheMethod.m`
 
 ---
 
-## Core Skills Demonstrated
-
-This code demonstrates experience in:
+## Skills and knowledge needed for these tools 
 
 * **Developing novel methods:** The solvers were built from conservation equations to solve the problem of physical inconsistency in existing models.
 * **Solving inverse problems:** The code is the "forward model" engine designed for use within a full geophysical inversion framework.

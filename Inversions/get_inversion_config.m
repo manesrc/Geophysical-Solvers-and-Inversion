@@ -7,7 +7,6 @@ function cfg = get_inversion_config(type)
     %   cfg = get_inversion_config('Standard');
 
     % --- Default / Global Inversion Settings ---
-    cfg.plot_cut_elements = 0;   % 0 or 1 to plot the elements and interface while doing the inversion
     cfg.consider_convection = 1; % to consider convection or not
     cfg.dirichlet_condition = 1; % conductivity direction: 1 (vertical) or 0 (isotropic)
     cfg.make_up = 1;             % level set make-up or not (1/0): estimates a level-set without re-computing it
@@ -102,6 +101,6 @@ function cfg = get_inversion_config(type)
             cfg.LAB_priorGeometry.LAB_XChanges = [];
 
         otherwise
-            error('InversionConfig:UnknownType', 'Unknown experiment type: %s. Use "LABref" or "Standard".', type);
+            error('InversionConfig:UnknownType', 'Unknown experiment type: %s. Use "LABref", "Standard-linear" or "Standard-sinusoidal.', type);
     end
 end

@@ -1,0 +1,107 @@
+function cfg = get_inversion_config(type)
+    % GET_INVERSION_CONFIG Generates the parameter set for specific inversion cases.
+    % This centralizes the "LABref" vs "Standard" definitions to ensure code duplication.
+    %
+    % Usage:
+    %   cfg = get_inversion_config('LABref');
+    %   cfg = get_inversion_config('Standard');
+
+    % --- Default / Global Inversion Settings ---
+    cfg.plot_cut_elements = 0;   % 0 or 1 to plot the elements and interface while doing the inversion
+    cfg.consider_convection = 1; % to consider convection or not
+    cfg.dirichlet_condition = 1; % conductivity direction: 1 (vertical) or 0 (isotropic)
+    cfg.make_up = 1;             % level set make-up or not (1/0): estimates a level-set without re-computing it
+
+    switch type
+        case 'LABref'   % Note: LABref was obtained from Afonso08
+            % --- Domain & Discretization ---
+            cfg.Long_X = 3000 * 1000;
+            cfg.maxDepth = 400 * 1000;
+            cfg.nel_x = 80;
+            cfg.nel_y = 12;
+            
+            % --- Observed Data ---
+            % Reference: Afonso et al. (2008)
+            data_path = '98_data_base/Afonso08_conv_nelx_80_12TLAB_1573.mat';
+            if exist(data_path, 'file')
+                data = load(data_path, 'Temp');
+                cfg.Data_obs = data.Temp;
+            else
+                warning('Data file not found at: %s', data_path);
+                cfg.Data_obs = [];
+            end
+
+            % --- LAB Geometry Definition ---
+            cfg.LAB_definition.case = 'inf_Afonso08';
+            cfg.LAB_definition.depth_ini = cfg.maxDepth - 110*1000;
+            cfg.LAB_definition.mx = 0;
+            cfg.LAB_definition.rescaleY = 1.1;
+            cfg.LAB_definition.Y_0 = 0;
+
+            % --- Prior Constraints ---
+            cfg.LAB_priorGeometry.LAB_minDepth = [160 160 160]*1000;
+            cfg.LAB_priorGeometry.LAB_maxDepth = [230 300 230]*1000;
+            cfg.LAB_priorGeometry.LAB_XChanges = [800*1000 cfg.Long_X-800*1000];
+
+        case 'Standard-linear'
+            % --- Domain & Discretization ---
+            cfg.Long_X = 660 * 1000;
+            cfg.maxDepth = 660 * 1000;
+            cfg.nel_x = 30;
+            cfg.nel_y = 30;
+
+            % --- Observed Data ---
+            data_path = '98_data_base/data4inversion_linear_nelx30x_nely30.mat';
+            if exist(data_path, 'file')
+                data = load(data_path);
+                cfg.Data_obs = data.Temp;
+            else
+                warning('Data file not found at: %s', data_path);
+                cfg.Data_obs = [];
+            end
+
+            % --- LAB Geometry Definition ---
+            cfg.LAB_definition.case = 'linear';
+            cfg.LAB_definition.depth_ini = cfg.maxDepth - 100*1000;
+            cfg.LAB_definition.mx = 0;
+            cfg.LAB_definition.rescaleY = 1.1;
+            cfg.LAB_definition.Y_0 = 0;
+
+            % --- Prior Constraints ---
+            cfg.LAB_priorGeometry.LAB_minDepth = 58 * 1000;
+            cfg.LAB_priorGeometry.LAB_maxDepth = 135 * 1000;
+            cfg.LAB_priorGeometry.LAB_XChanges = [];
+
+        case 'Standard-sinusoidal'
+            % --- Domain & Discretization ---
+            cfg.Long_X = 660 * 1000;
+            cfg.maxDepth = 660 * 1000;
+            cfg.nel_x = 30;
+            cfg.nel_y = 30;
+
+            % --- Observed Data ---
+            data_path = '98_data_base/data4inversion_sinusoidal_nelx30x_nely30.mat';
+            if exist(data_path, 'file')
+                data = load(data_path);
+                cfg.Data_obs = data.Temp;
+            else
+                warning('Data file not found at: %s', data_path);
+                cfg.Data_obs = [];
+            end
+
+            % --- LAB Geometry Definition ---
+            cfg.LAB_definition.case = 'linear';
+            cfg.LAB_definition.depth_ini = cfg.maxDepth - 100*1000;
+            cfg.LAB_definition.mx = 0;
+            cfg.LAB_definition.rescaleY = 1.1;
+            cfg.LAB_definition.Y_0 = 0;
+
+            % --- Prior Constraints ---
+            cfg.LAB_priorGeometry.LAB_minDepth = 58 * 1000;
+            cfg.LAB_priorGeometry.LAB_maxDepth = 135 * 1000;
+            cfg.LAB_priorGeometry.LAB_XChanges = [];
+
+        otherwise
+            error('InversionConfig:UnknownType', 'Unknown experiment type: %s. Use "LABref" or "Standard".', type);
+    end
+end

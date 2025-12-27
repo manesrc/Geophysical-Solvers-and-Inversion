@@ -6,7 +6,7 @@ cfg = get_inversion_config(experimentType);
 cfg.forward_method = 1; % method 1 (split-domain) or method 2 (entire-domain)
 
 % MCMC Parameters
-cfg.nstep = 1e5; % number of MCMC steps
+cfg.nstep = 15; % number of MCMC steps
 cfg.h = ceil(max(cfg.maxDepth/cfg.nel_y, cfg.Long_X/cfg.nel_x));    % characteristic mesh size
 cfg.sigma_d = 0.5 * cfg.h;  % data uncertainty
 cfg.len_prop = 1.5 * cfg.h; % propagation length of the proposal distribution
@@ -40,4 +40,4 @@ save_name = generateNames2save(cfg);
     );
 
 %% 3. Save Results
-save(save_name, 'inverted_var', 'error_vec', 'phi_t', 'accepted', 'rejected', 'time_inv', '-v7.3');
+save(save_name, 'inverted_var', 'error_vec', 'phi_t', 'accepted', 'rejected', 'time_inv','rel_dof', '-v7.3');

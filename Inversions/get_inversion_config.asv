@@ -8,7 +8,7 @@ function cfg = get_inversion_config(type)
     %   cfg = get_inversion_config('Standard-linear');
     %   cfg = get_inversion_config('Standard-sinusoidal'); 
     % for other shapes to be implemented create the case w/ Domain and mesh
-    % discretization + observed data + Prior distribution definition
+    % discretization + observed data + 
 
     % --- Default / Global Inversion Settings ---
     cfg.consider_convection = 1; % to consider convection or not
@@ -34,7 +34,7 @@ function cfg = get_inversion_config(type)
                 cfg.Data_obs = [];
             end
 
-            % --- LAB initial geometry ---
+            % --- LAB initial geome---
             cfg.LAB_definition.case = 'inf_Afonso08';
             cfg.LAB_definition.depth_ini = cfg.maxDepth - 110*1000;
             cfg.LAB_definition.mx = 0;
@@ -63,7 +63,7 @@ function cfg = get_inversion_config(type)
                 cfg.Data_obs = [];
             end
 
-            % --- LAB initial geometry ---
+            % --- LAB Geometry Definition ---
             cfg.LAB_definition.case = 'linear';
             cfg.LAB_definition.depth_ini = cfg.maxDepth - 100*1000;
             cfg.LAB_definition.mx = 0;
@@ -92,7 +92,7 @@ function cfg = get_inversion_config(type)
                 cfg.Data_obs = [];
             end
 
-            % --- LAB initial geometry ---
+            % --- LAB Geometry Definition ---
             cfg.LAB_definition.case = 'linear';
             cfg.LAB_definition.depth_ini = cfg.maxDepth - 100*1000;
             cfg.LAB_definition.mx = 0;

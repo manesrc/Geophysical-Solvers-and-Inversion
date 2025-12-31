@@ -1,4 +1,5 @@
 %% 1. Initialize Experiment Configuration
+% The options define the type of data to compare with in the inversion
 % Options: 'LABref', 'Standard-linear' or 'Standard-sinusoidal'
 experimentType = 'Standard-linear'; 
 cfg = get_inversion_config(experimentType);
@@ -6,14 +7,14 @@ cfg = get_inversion_config(experimentType);
 cfg.forward_method = 1; % method 1 (split-domain) or method 2 (entire-domain)
 
 % MCMC Parameters
-cfg.nstep = 1e5; % number of MCMC steps
+cfg.nstep = 5e5; % number of MCMC steps
 cfg.h = ceil(max(cfg.maxDepth/cfg.nel_y, cfg.Long_X/cfg.nel_x));    % characteristic mesh size
-cfg.sigma_d = 0.5 * cfg.h;  % data uncertainty
-cfg.len_prop = 1.5 * cfg.h; % propagation length of the proposal distribution
+cfg.sigma_d = 0.25 * cfg.h;  % data uncertainty
+cfg.len_prop = 1.0 * cfg.h; % propagation length of the proposal distribution
 
-cfg.plot_cut_elements = 1;   % 0 or 1 to plot the elements and interface while doing the inversion
+cfg.plot_cut_elements = 0;   % 0 or 1 to plot the elements and interface while doing the inversion
 % Type of data to invert
-cfg.inversion_case = 'Temp_Omega'; % cases: 'Temp_Omega'; 'Temp_sup', 'flux_sup'
+cfg.inversion_case = 'flux_sup'; % cases: 'Temp_Omega'; 'Temp_sup', 'flux_sup'
 
 % Set a unique name for saving (also) intermediate results
 save_name = generateNames2save(cfg);

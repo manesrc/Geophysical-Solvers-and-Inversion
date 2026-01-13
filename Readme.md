@@ -17,7 +17,7 @@ This framework consists of three main components:
 problems, enforcing the continuity of temperature and flux at the interface -> supporting journal paper DOI: 10.1108/hff-10-2023-0649.
 2.  **[Solver 2 - UPLOADED] Convection Solver:** A novel, single-domain solver where convection velocities are determined to naturally adjust the isotherm value at 
 the interface -> supporting journal paper in preparation.
-3.  **[Inverse Framework - To be uploaded] MCMC Inversion:** The "englobing" code that uses the two solvers above as an engine to solve the inverse problem, using Bayesian MCMC to 
+3.  **[Inverse Framework - UPLOADED] MCMC Inversion:** The "englobing" code that uses the two solvers above as an engine to solve the inverse problem, using Bayesian MCMC to 
 quantify the uncertainty of the LAB's geometry  -> supporting journal paper in preparation
 
 ### Repository Status

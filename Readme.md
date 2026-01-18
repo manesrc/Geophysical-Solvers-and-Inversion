@@ -22,7 +22,7 @@ quantify the uncertainty of the LAB's geometry  -> supporting journal paper in p
 
 ### Repository Status
 
-This repository currently contains the **full MATLAB code for the first and second solvers (Solver 1: Nitsche's Method and Solver 2: Convection Solver)**.
+This repository currently contains the **full MATLAB code for first and second solvers and Inversions (Solver 1: Nitsche's Method and Solver 2: Convection Solver)**.
 * The core functions and modules are located in the uploaded folders each describing specific tasks developed during the code execution.
 * The main script to run the first solver is 'ComputeTemp_NitscheMethod.m' 
 * The main script to run the second solver is 'main_uAdjustment.m'
@@ -36,18 +36,6 @@ The code for tthe MCMC inversion framework is currently being cleaned and prepar
 
 * **Language:** MATLAB R2024a 
 * **Core Requirements:** `OptimizationToolbox` 
-
----
-
-## Skills and knowledge needed for these tools 
-
-* **Developing novel methods:** The solvers were built from conservation equations to solve the problem of physical inconsistency in existing models.
-* **Solving inverse problems:** The code is the "forward model" engine designed for use within a full geophysical inversion framework.
-* **Quantifying uncertainties:** The full framework uses this solver within a Bayesian MCMC loop.
-* **Validate rigorousity:** The methods were validated against analytically-derived benchmark problems and real-world data (SHF).
-* **Programming in MATLAB:** Advanced proficiency in MATLAB for numerical simulation.
-* **Writing and documenting, reproducible scientific software:** The code shows the ability to work among colleagues to produce software.
-  
 ---
 
 ## License
